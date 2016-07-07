@@ -1,7 +1,41 @@
-.wrapper
+.desktop.hidden-xs
   = image_tag 'background.jpg', class:'background'
-  .glass
-    /= fa_icon "plus 5x"
-  .bottle
-  .plate
-  .phone
+  a data-lightbox="wine-menu" href="http://placehold.it/350x550"
+    .glass
+  a data-lightbox="wine-menu2" href="http://placehold.it/350x550"
+    .bottle
+  a data-lightbox="menu" href="http://placehold.it/650x550"
+    .plate
+  .phone data-toggle="modal" data-target="#feedbackModal"
+.mobile.visible-xs
+  = image_tag 'background_mobile.jpg', class:'background'
+
+#feedbackModal.modal.fade role="dialog" tabindex="-1"
+  .modal-dialog role="document"
+    .modal-content
+      .modal-header
+        button.close aria-label="Close" data-dismiss="modal" type="button"
+          span aria-hidden="true"  &times;
+        h4.modal-title Напишите нам!
+      .modal-body
+        form#feedback_form
+          .form-group
+            input.form-control type='email' name='email' placeholder='Ваш email' required=true
+          .form-group
+            textarea.form-control name='message' placeholder='Ваше сообщение' required=true
+          .form-group
+            input type='submit'
+
+coffee:
+  $ ->
+    $('#feedback_form').submit (e) ->
+      url = '/main/send_feedback'
+      $.ajax
+        type: 'POST'
+        url: url
+        data: $('#feedback_form').serialize()
+        success: (data) ->
+          alert('Сообщение отправлено! Потом пофиксить.')
+          return
+      e.preventDefault()
+      return
