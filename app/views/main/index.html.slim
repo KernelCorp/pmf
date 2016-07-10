@@ -1,5 +1,14 @@
 .desktop.hidden-xs
   = image_tag 'background.jpg', class:'background'
+  a data-lightbox="wine-menu-desktop" href="http://placehold.it/350x550"
+    .glass
+  a data-lightbox="wine-menu2-desktop" href="http://placehold.it/350x550"
+    .bottle
+  a data-lightbox="menu-desktop" href="http://placehold.it/650x550"
+    .plate
+  .phone data-toggle="modal" data-target="#feedbackModal"
+.mobile.visible-xs
+  = image_tag 'background_mobile.jpg', class:'background'
   a data-lightbox="wine-menu" href="http://placehold.it/350x550"
     .glass
   a data-lightbox="wine-menu2" href="http://placehold.it/350x550"
@@ -7,8 +16,6 @@
   a data-lightbox="menu" href="http://placehold.it/650x550"
     .plate
   .phone data-toggle="modal" data-target="#feedbackModal"
-.mobile.visible-xs
-  = image_tag 'background_mobile.jpg', class:'background'
 
 #feedbackModal.modal.fade role="dialog" tabindex="-1"
   .modal-dialog role="document"
